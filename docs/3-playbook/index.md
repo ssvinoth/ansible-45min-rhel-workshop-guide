@@ -50,7 +50,6 @@ Now create a playbook named `system_setup.yml` to perform basic system setup:
 The basic structure looks as follows:
 
 
-
 ```yaml
 ---
 - name: Basic System Setup
@@ -70,9 +69,8 @@ The basic structure looks as follows:
 ```
 
 !!! tip "Note"
-     Use the exact playbook content provided below. To avoid formatting issues, click the Copy icon on the right side of the code block and paste it into your VS Code playbook file.
+     Use the exact playbook content provided above. To avoid formatting issues, click the Copy icon on the right side of the code block and paste it into your VS Code playbook file. See below.
 
-> Note: Use the exact playbook content provided below. To avoid formatting issues, click the Copy icon on the right side of the code block and paste it into your VS Code playbook file.
 
 ![Copy playbook content](images/code-copy-icon.jpg)
 
@@ -89,6 +87,8 @@ The basic structure looks as follows:
 See the gif below for steps:
 
 ![Create Playbook in VSCode](images/vscode-open-folder.gif)
+
+> Note: Use the exact playbook content provided above. To avoid formatting issues, click the Copy icon on the right side of the code block and paste it into your VS Code playbook file.
 
 * About the `package` module: This modules manages packages on a target without specifying a package manager module
 
