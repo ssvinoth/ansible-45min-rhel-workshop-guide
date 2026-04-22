@@ -1,0 +1,1127 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../3-playbook/">
+      
+      
+        <link rel="next" href="../5-surveys/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../images/RH_AAP_Logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Exercise 2 - First Automation Job - Ansible Automation Platform Workshop Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#workshop-exercise-2-projects-job-templates" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Ansible Automation Platform Workshop Guide" class="md-header__button md-logo" aria-label="Ansible Automation Platform Workshop Guide" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ansible Automation Platform Workshop Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Exercise 2 - First Automation Job
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Ansible Automation Platform Workshop Guide" class="md-nav__button md-logo" aria-label="Ansible Automation Platform Workshop Guide" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    Ansible Automation Platform Workshop Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Guide Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding the lab setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-thebasics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 - First playbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 - First Automation Job
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 - First Automation Job
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objective
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Objective">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-you-will-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You Will Do
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guide
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-git-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Git Repository
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create the Project
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-job-template-and-run-a-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a Job Template and Run a Job
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenge-lab-check-the-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Challenge Lab: Check the Result
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-surveys/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 3 - User Inputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-bonus-workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bonus Exercise 4 - Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objective
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Objective">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-you-will-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You Will Do
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guide
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-git-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Git Repository
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create the Project
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-job-template-and-run-a-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a Job Template and Run a Job
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenge-lab-check-the-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Challenge Lab: Check the Result
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="workshop-exercise-2-projects-job-templates">Workshop Exercise 2 - Projects &amp; Job Templates</h1>
+<h2 id="table-contents">Table Contents</h2>
+<ul>
+<li><a href="#objective">Objective</a></li>
+<li><a href="#guide">Guide</a></li>
+<li><a href="#setup-git-repository">Setup Git Repository</a></li>
+<li><a href="#create-the-project">Create the Project</a></li>
+<li><a href="#create-a-job-template-and-run-a-job">Create a Job Template and Run a Job</a></li>
+<li><a href="#challenge-lab-check-the-result">Challenge Lab: Check the Result</a></li>
+<li><a href="#what-about-some-practice">What About Some Practice?</a></li>
+</ul>
+<h2 id="objective">Objective</h2>
+<ul>
+<li>
+<p>Red Hat Ansible Automation Platform is like a <strong>full kitchen</strong>. It has many tools and components that work together to help you automate tasks at an enterprise level.  </p>
+</li>
+<li>
+<p>One important part of this kitchen is the <strong>Ansible Automation Platform Controller</strong>. It helps you run your automation jobs in a secure and controlled way.  </p>
+</li>
+<li>
+<p>To run an automation job, the Controller uses a few key objects:</p>
+<ul>
+<li>
+<p><strong>Projects</strong>: A collection of playbooks (automation scripts). These are usually stored in a version control system like Git.  </p>
+</li>
+<li>
+<p><strong>Inventory</strong>: A list of systems (servers or nodes) where your automation will run.  </p>
+</li>
+<li>
+<p><strong>Credentials</strong>: Secure information (like usernames, passwords, or SSH keys) used to connect to your systems.  </p>
+</li>
+<li>
+<p><strong>Execution Environment Image</strong>: Think of this as a <strong>Lego box set</strong> 🧱. It contains all the tools, modules (Legos), and dependencies needed to run your automation (playbook).  </p>
+</li>
+<li>
+<p><strong>Job Template</strong>: This is the <strong>blueprint</strong> that connects everything together (project, inventory, credentials, and execution environment) to run an automation job.  </p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="what-you-will-do">What You Will Do</h3>
+<p>In this exercise, you will:</p>
+<ol>
+<li>Create a new <strong>Project</strong> using an existing playbook repository  </li>
+<li>Create a <strong>Job Template</strong>  </li>
+<li>Run your first automation job using the Ansible Automation Platform Controller  </li>
+</ol>
+<p>By the end, you will understand how all these components work together—just like using the right tools in a full kitchen.</p>
+<h2 id="guide">Guide</h2>
+<h3 id="setup-git-repository">Setup Git Repository</h3>
+<p>For this demonstration, we will use playbooks stored in a Git repository:</p>
+<p><a href="https://github.com/ansible/workshop-examples">https://github.com/ansible/workshop-examples</a></p>
+<p>A playbook to install the Apache web server has already been committed to the directory <strong>rhel/apache</strong>, <code>apache_install.yml</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nn">---</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Apache server installed</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span>
+
+<span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">latest Apache version installed</span>
+<span class="w">    </span><span class="nt">ansible.builtin.yum</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpd</span>
+<span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">latest</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">latest firewalld version installed</span>
+<span class="w">    </span><span class="nt">ansible.builtin.yum</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">firewalld</span>
+<span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">latest</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">firewalld enabled and running</span>
+<span class="w">    </span><span class="nt">ansible.builtin.service</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">firewalld</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">started</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">firewalld permits http service</span>
+<span class="w">    </span><span class="nt">ansible.builtin.firewalld</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="w">      </span><span class="nt">permanent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span>
+<span class="w">      </span><span class="nt">immediate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Apache enabled and running</span>
+<span class="w">    </span><span class="nt">ansible.builtin.service</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpd</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">started</span>
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p><strong>Note:</strong>
+Observe the difference from other playbooks you might have written! Most importantly, there is no <code>become</code> and <code>hosts</code> is set to <code>web</code>. When you set hosts to <code>web</code>, the playbook automates all hosts in that group (node1, node2, and node3) in parallel. This enables consistent automation across a large scale of hosts. </p>
+</blockquote>
+<p>To configure and use this repository as a <strong>Source Control Management (SCM)</strong> system in automation controller you have to create a <strong>Project</strong> that uses the repository</p>
+<h3 id="create-the-project">Create the Project</h3>
+<ul>
+<li>
+<p>Ansible Automation Platform 2.4 : Go to <strong>Resources → Projects</strong> click the <strong>Add</strong> Project button. Fill in the form:</p>
+</li>
+<li>
+<p>If you do not see the <code>Resources</code> menu on the side, your environment is likely running Ansible Automation Platform version 2.5 or later. In that case, go to <strong>Automation Execution → Projects</strong> , then click the <strong>Create Project</strong> button and fill in the form.</p>
+</li>
+</ul>
+<table>
+   <tr>
+     <th>Parameter</th>
+     <th>Value</th>
+   </tr>
+   <tr>
+     <td>Name</td>
+     <td>Workshop Project</td>
+   </tr>
+   <tr>
+     <td>Organization</td>
+     <td>Default</td>
+   </tr>
+   <tr>
+     <td>Execution Environment</td>
+     <td>Default execution environment</td>
+   </tr>
+   <tr>
+     <td>Source Control Type</td>
+     <td>Git</td>
+   </tr>
+ </table>
+
+<p>Enter the URL into the Project configuration:</p>
+<table>
+   <tr>
+     <th>Parameter</th>
+     <th>Value</th>
+   </tr>
+   <tr>
+     <td>Source Control URL</td>
+     <td><code>https://github.com/ansible/workshop-examples.git</code></td>
+   </tr>
+   <tr>
+     <td>Options</td>
+     <td>Optional: Select Clean, Delete, Update Revision on Launch to request a fresh copy of the repository and to update the repository when launching a job.</td>
+   </tr>
+ </table>
+
+<p><img alt="Project Create" src="images/1-aap24-project-creation.jpg" /></p>
+<ul>
+<li>Click <strong>Save</strong> or <strong>Create project</strong></li>
+</ul>
+<p>The new project will be synced automatically after creation. But you can also do this manually: Sync the Project again by selecting the 'Sync project' blue button.</p>
+<p>After starting the sync job, go to the <strong>Jobs</strong> view, and you'll find the job doing the project update.</p>
+<p><img alt="Project Sync" src="images/2-aap24-project-sync.jpg" /></p>
+<p>You should see "Successful" in the "Last Job Status" before you proceed.</p>
+<h3 id="create-a-job-template-and-run-a-job">Create a Job Template and Run a Job</h3>
+<p>A job template allows you to run an automation job. In order to run any type of automation, a job template must be created. A job template consists of knowning the following information:</p>
+<ul>
+<li>
+<p><strong>Inventory</strong>: On what hosts should the job run?</p>
+</li>
+<li>
+<p><strong>Credentials</strong> What credentials are needed to log into the hosts?</p>
+</li>
+<li>
+<p><strong>Project</strong>: Where is the playbook?</p>
+</li>
+<li>
+<p><strong>Playbook</strong>: What playbook to use?</p>
+</li>
+</ul>
+<p>The <strong>Workshop Inventory</strong> and <strong>Workshop Credential</strong> have been pre-configured for this workshop. You can explore their details by navigating to <strong>Resources → Inventories</strong> for the inventory and <strong>Resources → Credentials</strong> for the credentials. Feel free to review them before proceeding.</p>
+<ul>
+<li>If you do not see the <code>Resources</code> menu on the side, your environment is likely running Ansible Automation Platform version 2.5 or later. In that case, go to <strong>Automation Execution → Infrastructure → Inventories → Workshop Inventory</strong> , for credentials <strong>Automation Execution → Infrastructure → Credentials → Workshop Credential</strong></li>
+</ul>
+<p><strong>Workshop Inventory</strong> </p>
+<p>Resources → Inventories → Workshop Inventory → Hosts (Tab)
+<img alt="Workshop Inventory" src="images/inventory_hosts.jpg" /></p>
+<p>Resources → Inventories → Workshop Inventory → Groups (Tab) → web
+<img alt="Workshop Inventory - Group web" src="images/inventory_group_web.jpg" /></p>
+<p><strong>Workshop Credential</strong>
+Resources → Credentials → Workshop Credential
+<img alt="Workshop Credential" src="images/workshop_credential.jpg" /></p>
+<blockquote>
+<p><strong>Note</strong>
+Credentials are securely stored in encrypted format. Even as an administrator, you cannot retrieve them in plain text.</p>
+</blockquote>
+<p><strong>Job Template</strong></p>
+<p>To create a Job Template, go to the <strong>Resources -&gt; Templates</strong> view,click the <strong>Create template</strong> button and choose <strong>Create job template</strong>.</p>
+<p><img alt="AAP24 Project Create Menu" src="images/3-aap24-create-template-menu.jpg" /></p>
+<ul>
+<li>If you do not see the <code>Resources</code> menu on the side, your environment is likely running Ansible Automation Platform version 2.5 or later. In that case, go to the <strong>Automation Execution -&gt; Templates</strong> view,click the <strong>Create template</strong> button and choose <strong>Create job template</strong>.</li>
+</ul>
+<p>Fill in the following form:</p>
+<blockquote>
+<p><strong>Tip</strong></p>
+<p>Remember that you can often click on the question mark with a circle to get more details about the field.</p>
+</blockquote>
+<table>
+   <tr>
+     <th>Parameter</th>
+     <th>Value</th>
+   </tr>
+   <tr>
+     <td>Name</td>
+     <td>Install Apache</td>
+   </tr>
+   <tr>
+     <td>Job Type</td>
+     <td>Run</td>
+   </tr>
+   <tr>
+     <td>Inventory</td>
+     <td>Workshop Inventory</td>
+   </tr>
+   <tr>
+     <td>Project</td>
+     <td>Workshop Project</td>
+   </tr>
+   <tr>
+     <td>Playbook</td>
+     <td><code>rhel/apache/apache_install.yml</code></td>
+   </tr>
+   <tr>
+     <td>Execution Environment</td>
+     <td>Default execution environment</td>
+   </tr>
+   <tr>
+     <td>Credentials</td>
+     <td>Workshop Credential</td>
+   </tr>
+   <tr>
+     <td>Limit</td>
+     <td>web</td>
+   </tr>
+   <tr>
+     <td>Options</td>
+     <td>tasks need to run as root so check **Privilege Escalation**</td>
+   </tr>
+ </table>
+
+<p><img alt="AAP24 Project Fill" src="images/4-aap24-create-template.jpg" /></p>
+<ul>
+<li>Click <strong>Save</strong> or <strong>Create job template</strong></li>
+</ul>
+<p>You can start the job by directly clicking the blue <strong>Launch template</strong> button, or by clicking on the rocket in the Job Templates overview. After launching the Job Template, you are automatically brought to the job overview where you can follow the playbook execution in real time.</p>
+<p>Template Details
+<img alt="template details" src="images/5-aap24-create-template-launch.jpg" /></p>
+<p>Job Run
+<img alt="job_run" src="images/6-aap24-job-output.jpg" /></p>
+<p>Since this might take some time, have a closer look at all the details provided:</p>
+<ul>
+<li>
+<p>All details of the job template like inventory, project, credentials and playbook are shown.</p>
+</li>
+<li>
+<p>Additionally, the actual revision of the playbook is recorded here - this makes it easier to analyse job runs later on.</p>
+</li>
+<li>
+<p>Also the time of execution with start and end time is recorded, giving you an idea of how long a job execution actually was.</p>
+</li>
+<li>
+<p>Selecting <strong>Output</strong> shows the output of the running playbook. Click on a node underneath a task and see that detailed information are provided for each task of each node.</p>
+</li>
+</ul>
+<p>After the Job has finished go to the main <strong>Jobs</strong> view: All jobs are listed here, you should see directly before the Playbook run an Source Control Update was started. This is the Git update we configured for the <strong>Project</strong> on launch!</p>
+<h3 id="challenge-lab-check-the-result">Challenge Lab: Check the Result</h3>
+<p>Time for a little challenge:</p>
+<ul>
+<li>Use an ad hoc command on both hosts to make sure Apache has been installed and is running.</li>
+</ul>
+<p>You have already been through all the steps needed, so try this for yourself.</p>
+<blockquote>
+<p><strong>Tip</strong>
+What about <code>systemctl status httpd</code>?</p>
+<p><strong>Warning</strong></p>
+<p><strong>Solution Below</strong></p>
+</blockquote>
+<ul>
+<li>Go to <code>Resources → Inventories → Workshop Inventory</code></li>
+<li>
+<p>If you do not see the <code>Resources</code> menu on the side, your environment is likely running Ansible Automation Platform version 2.5 or later. In that case, go to <strong>Automation Execution → Infrastructure →  Inventories</strong> → <strong>Workshop Inventory</strong></p>
+</li>
+<li>
+<p>Select the <strong>Hosts</strong> tab and select <code>node1</code>, <code>node2</code>, <code>node3</code> and click <strong>Run Command</strong></p>
+</li>
+</ul>
+<p><img alt="run command" src="images/7-aap24-inventory-host-adhoc-run.jpg" /></p>
+<p>Within the <strong>Details</strong> window, select <strong>Module</strong> <code>command</code>, in <strong>Arguments</strong> type <code>systemctl status httpd</code> and click <strong>Next</strong>.</p>
+<p>Within the <strong>Execution Environment</strong> window, select <strong>Default execution environment</strong> and click <strong>Next</strong>.</p>
+<p>Within the <strong>Credential</strong> window, select <strong>Workshop Credentials</strong> and click <strong>Next</strong>.</p>
+<p>Review your inputs and click <strong>Launch</strong>.
+<img alt="launch adhoc command" src="images/8-aap24-inventory-host-adhoc-run-httpd-launch.jpg" /></p>
+<p>Verify that the output result is as expected.</p>
+<p><img alt="adhoc command result" src="images/9-aap24-inventory-host-adhoc-run-httpd-launch-output.jpg" /></p>
+<blockquote>
+<p>The output of the results is displayed once the command has completed.</p>
+</blockquote>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../3-playbook/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Exercise 1 - First playbook">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Exercise 1 - First playbook
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../5-surveys/" class="md-footer__link md-footer__link--next" aria-label="Next: Exercise 3 - User Inputs">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Exercise 3 - User Inputs
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.footer", "content.code.copy", "content.code.select"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

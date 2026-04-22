@@ -1,0 +1,1170 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../4-projects/">
+      
+      
+        <link rel="next" href="../6-bonus-workflows/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../images/RH_AAP_Logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Exercise 3 - User Inputs - Ansible Automation Platform Workshop Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#exercise-3-surveys" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Ansible Automation Platform Workshop Guide" class="md-header__button md-logo" aria-label="Ansible Automation Platform Workshop Guide" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ansible Automation Platform Workshop Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Exercise 3 - User Inputs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Ansible Automation Platform Workshop Guide" class="md-nav__button md-logo" aria-label="Ansible Automation Platform Workshop Guide" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    Ansible Automation Platform Workshop Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Guide Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding the lab setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-thebasics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 - First playbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 - First Automation Job
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 3 - User Inputs
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 3 - User Inputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objective
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Objective">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#job-template-survey" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job Template Survey
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Job Template Survey">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-use-a-survey" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why use a Survey?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How it works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-you-will-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You Will Do
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guide
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-apache-configuration-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Apache-Configuration Role
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-template-with-a-survey" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a Template with a Survey
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a Template with a Survey">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create Template
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-the-survey" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add the Survey
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#launch-the-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Launch the Template
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-bonus-workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bonus Exercise 4 - Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objective
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Objective">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#job-template-survey" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job Template Survey
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Job Template Survey">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-use-a-survey" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why use a Survey?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How it works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-you-will-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You Will Do
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guide
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-apache-configuration-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Apache-Configuration Role
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-template-with-a-survey" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a Template with a Survey
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a Template with a Survey">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create Template
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-the-survey" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add the Survey
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#launch-the-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Launch the Template
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="exercise-3-surveys">Exercise 3 - Surveys</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#objective">Objective</a></li>
+<li><a href="#guide">Guide</a><ul>
+<li><a href="#the-apache-configuration-role">The Apache-Configuration Role</a></li>
+<li><a href="#create-a-template-with-a-survey">Create a Template with a Survey</a></li>
+<li><a href="#create-template">Create Template</a></li>
+<li><a href="#add-the-survey">Add the Survey</a></li>
+<li><a href="#launch-the-template">Launch the Template</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="objective">Objective</h2>
+<h3 id="job-template-survey">Job Template Survey</h3>
+<p>A Job Template <strong>Survey</strong> allows you to ask the user questions before running an automation job.</p>
+<p>Instead of editing the playbook or typing values manually, the survey provides a simple <strong>question-and-answer form</strong>.</p>
+<h4 id="why-use-a-survey">Why use a Survey?</h4>
+<ul>
+<li>Makes it easy for users to provide input  </li>
+<li>Avoids typing mistakes  </li>
+<li>Ensures the correct format of input (for example: numbers, text, yes/no)  </li>
+<li>No need to change the playbook  </li>
+</ul>
+<h4 id="how-it-works">How it works</h4>
+<p>When you launch a job template with a survey:
+1. You will see a set of questions<br />
+2. You enter your answers<br />
+3. The job runs using your inputs  </p>
+<h4 id="example">Example</h4>
+<p>You might use questions like:</p>
+<ul>
+<li>What is the package name to install?  </li>
+<li>Which environment do you want to target (dev/test/prod)?  </li>
+<li>Enter the username  </li>
+</ul>
+<p>Your answers are then used by the automation job.</p>
+<h3 id="what-you-will-do">What You Will Do</h3>
+<p>In this exercise, you will:</p>
+<ol>
+<li>Create a <strong>Survey</strong> for a Job Template  </li>
+<li>Add a few simple questions  </li>
+<li>Run the job and provide answers through the survey  </li>
+</ol>
+<p>This helps you understand how to make automation more interactive and user-friendly.</p>
+<p>Refer the <a href="https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/latest/html/using_automation_execution/controller-job-templates#controller-surveys-in-job-templates">survey documentation</a> for more details.</p>
+<h2 id="guide">Guide</h2>
+<p>You've installed Apache on all hosts in the job you just ran. Now, let's build on this:</p>
+<ul>
+<li>Use a proper role that includes a Jinja2 template to deploy an <code>index.html</code> file.</li>
+<li>Create a job <strong>Template</strong> with a survey to collect values for the <code>index.html</code> template.</li>
+<li>Launch the job <strong>Template</strong>.</li>
+</ul>
+<p>Additionally, the role will ensure that the Apache configuration is set up correctly for this exercise.</p>
+<blockquote>
+<p><strong>Tip</strong>
+The survey feature provides a simple query for data but does not support dynamic data queries, nested menus, or four-eye principles.</p>
+</blockquote>
+<h3 id="the-apache-configuration-role">The Apache-Configuration Role</h3>
+<p>The playbook and role with the Jinja2 template are located in the GitHub repository <a href="https://github.com/ansible/workshop-examples">https://github.com/ansible/workshop-examples</a> in the <code>rhel/apache</code> directory.</p>
+<ul>
+<li>Have a look at the playbook <code>apache_role_install.yml</code>, which references the role.</li>
+<li>The role is located in the <code>roles/role_apache</code> subdirectory.</li>
+<li>Inside the role, note the two variables in the <code>templates/index.html.j2</code> template file marked by <code>{{…​}}</code>.</li>
+<li>The <code>tasks/main.yml</code> file deploys the template.</li>
+</ul>
+<p>The playbook creates a file (<strong>dest</strong>) on the managed hosts from the template (<strong>src</strong>).</p>
+<p>Because the playbook and role are located in the same GitHub repo as the <code>apache_install.yml</code> playbook, you don't need to configure a new project for this exercise.</p>
+<h3 id="create-a-template-with-a-survey">Create a Template with a Survey</h3>
+<p>Now, let's create a new Template that includes a survey.</p>
+<h4 id="create-template">Create Template</h4>
+<ol>
+<li>
+<p>Go to <strong>Resources → Templates</strong>, click the <strong>Add</strong> button, and choose <strong>Add job Template</strong>.</p>
+</li>
+<li>
+<p>If you do not see the <code>Resources</code> menu on the side, your environment is likely running Ansible Automation Platform version 2.5 or later. In that case, go to the <strong>Automation Execution -&gt; Templates</strong> view,click the <strong>Create template</strong> button and choose <strong>Create job template</strong>.</p>
+</li>
+<li>
+<p>Fill out the following details:</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>Create index.html</td>
+</tr>
+<tr>
+<td>Job Type</td>
+<td>Run</td>
+</tr>
+<tr>
+<td>Inventory</td>
+<td>Workshop Inventory</td>
+</tr>
+<tr>
+<td>Project</td>
+<td>Workshop Project</td>
+</tr>
+<tr>
+<td>Playbook</td>
+<td><code>rhel/apache/apache_role_install.yml</code></td>
+</tr>
+<tr>
+<td>Execution Environment</td>
+<td>Default execution environment</td>
+</tr>
+<tr>
+<td>Credentials</td>
+<td>Workshop Credential</td>
+</tr>
+<tr>
+<td>Limit</td>
+<td>web</td>
+</tr>
+<tr>
+<td>Options</td>
+<td>Privilege Escalation</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="template create" src="images/1-aap24-create-template-survey-save.jpg" />
+3. Click <strong>Save</strong> or <strong>Create job template</strong>.</p>
+<p><img alt="template details" src="images/2-aap24-create-index-template-details.jpg" /></p>
+<blockquote>
+<p><strong>Warning</strong>
+<strong>Do not run the template yet!</strong></p>
+</blockquote>
+<h4 id="add-the-survey">Add the Survey</h4>
+<ol>
+<li>In the Template, click the <strong>Survey</strong> tab, then click <strong>Add</strong> or <strong>Create survey question</strong>.</li>
+<li>Fill out the following for the first survey question:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Question</td>
+<td>First Line</td>
+</tr>
+<tr>
+<td>Answer Variable Name</td>
+<td>first_line</td>
+</tr>
+<tr>
+<td>Answer Type</td>
+<td>Text</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Survey Q1" src="images/3-aap24-create-index-template-survey-1st-que.jpg" /></p>
+<ol>
+<li>Click <strong>Save</strong> or <strong>Create survey question</strong>.</li>
+<li>Click <strong>Add</strong> or <strong>Create survey question</strong> to create a second survey question:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Question</td>
+<td>Second Line</td>
+</tr>
+<tr>
+<td>Answer Variable Name</td>
+<td>second_line</td>
+</tr>
+<tr>
+<td>Answer Type</td>
+<td>Text</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Survey Q2" src="images/4-aap24-create-index-template-survey-2nd-que.jpg" /></p>
+<ol>
+<li>Click <strong>Create survey question</strong>.</li>
+<li>Enable the survey by toggling the <strong>Survey disabled</strong> button to the <code>ON</code> positon. </li>
+</ol>
+<blockquote>
+<p>Warning: Make sure to enable the Survey. Otherwise, it will not show up when launching the Job Template. </p>
+</blockquote>
+<p><img alt="Survey Enable" src="images/5-aap24-create-index-template-survey-enable.jpg" /></p>
+<h3 id="launch-the-template">Launch the Template</h3>
+<p>Now, launch the <strong>Create index.html</strong> job template by clicking the <strong>Launch template</strong> button.</p>
+<p>Before the job starts, the survey will prompt for <strong>First Line</strong> and <strong>Second Line</strong>. Enter your text and click <strong>Next</strong>. The <strong>Preview</strong> window shows the values—if all looks good, click <strong>Launch</strong> or <strong>Finish</strong> to start the job.</p>
+<p>Template Launch: 
+<img alt="Template Launch" src="images/6-aap24-create-index-template-launch.jpg" /></p>
+<p>Survey Fill: 
+<img alt="Survey Launch" src="images/7-aap24-create-index-template-launch-survey-fill.jpg" /></p>
+<p>Survey Review and Launch: 
+<img alt="Survey Review" src="images/8-aap24-create-index-template-job-output.jpg" /></p>
+<p>Once the job completes, verify the Apache homepage by running the following <code>curl http://node1</code> command in the SSH console on the control host (In VS Code Terminal window).</p>
+<p><img alt="Check Job" src="images/9-aap24-create-index-template-job-check-vscode-curl.jpg" /></p>
+<p><strong>Alternatively</strong>, You can run adhoc command on <code>node1</code>:</p>
+<ul>
+<li>Go to <code>Resources → Inventories → Workshop Inventory</code></li>
+<li>
+<p>If you do not see the <code>Resources</code> menu on the side, your environment is likely running Ansible Automation Platform version 2.5 or later. In that case, go to <strong>Automation Execution → Infrastructure →  Inventories</strong> → <strong>Workshop Inventory</strong></p>
+</li>
+<li>
+<p>Select the Hosts tab and select <code>node1</code> and click Run Command</p>
+</li>
+<li>
+<p>Within the Details window, select Module command, in Arguments type <code>curl http://node1</code> and click Next.</p>
+</li>
+<li>
+<p>Within the Execution Environment window, select Default execution environment and click Next.</p>
+</li>
+<li>
+<p>Within the Credential window, select Workshop Credentials and click Next.</p>
+</li>
+<li>
+<p>Review your inputs and click Finish.</p>
+</li>
+</ul>
+<p>Verify that the output result is as expected.</p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../4-projects/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Exercise 2 - First Automation Job">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Exercise 2 - First Automation Job
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../6-bonus-workflows/" class="md-footer__link md-footer__link--next" aria-label="Next: Bonus Exercise 4 - Workflows">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Bonus Exercise 4 - Workflows
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.footer", "content.code.copy", "content.code.select"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

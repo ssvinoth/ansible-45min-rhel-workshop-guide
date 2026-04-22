@@ -1,0 +1,112 @@
+/* Constrain right sidebar to fixed narrow width */
+.md-sidebar--secondary {
+  display: block !important;
+  width: 180px !important;
+}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap {
+  width: 180px !important;
+}
+
+/* Adjust main content to account for narrower sidebar */
+.md-content {
+  max-width: 100% !important;
+  margin-right: 0 !important;
+}
+
+/* Make TOC text smaller */
+.md-sidebar--secondary .md-nav__link {
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+}
+
+.md-sidebar--secondary .md-nav__title {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}
+
+/* Reduce padding in sidebar */
+.md-sidebar--secondary .md-nav {
+  padding: 8px 0 !important;
+}
+
+.md-sidebar--secondary .md-nav__list {
+  margin: 0 !important;
+}
+
+/* Optional: make sidebar slightly transparent for visual hierarchy */
+.md-sidebar--secondary {
+  opacity: 0.95;
+}
+
+/* Expand main content to full width */
+.md-content {
+  max-width: 100% !important;
+}
+
+.md-grid {
+  max-width: 100% !important;
+}
+
+/* White top bar with black text */
+.md-header {
+  background-color: white !important;
+  color: black !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.md-header__title {
+  color: black !important;
+}
+
+.md-header-nav__topic {
+  color: black !important;
+}
+
+/* Search box styling for white header */
+.md-search__input {
+  background-color: #f5f5f5 !important;
+  color: black !important;
+}
+
+.md-search__input::placeholder {
+  color: #999 !important;
+}
+
+/* Navigation text in white header */
+.md-nav__title {
+  color: black !important;
+}
+
+.md-nav__link {
+  color: #333 !important;
+}
+
+.md-nav__link:hover {
+  color: indigo !important;
+}
+
+[data-md-color-scheme="slate"] .md-nav__title {
+  color: #eceff1 !important;  /* White text in dark mode */
+}
+
+[data-md-color-scheme="slate"] .md-nav__link {
+  color: #eceff1 !important;  /* White text in dark mode */
+}
+
+[data-md-color-scheme="slate"] .md-nav__link:hover {
+  color: #64b5f6 !important;  /* Light blue on hover */
+}
+
+.md-search__icon {
+  color: #666 !important;
+}
+
+/* .md-footer__footer {
+  display: none !important;
+} */
+
+.md-footer-meta {
+  display: none !important;
+}
+

@@ -1,0 +1,1053 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../1-setup/">
+      
+      
+        <link rel="next" href="../3-playbook/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../images/RH_AAP_Logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Ansible Basics - Ansible Automation Platform Workshop Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#workshop-exercise-the-ansible-basics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Ansible Automation Platform Workshop Guide" class="md-header__button md-logo" aria-label="Ansible Automation Platform Workshop Guide" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ansible Automation Platform Workshop Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ansible Basics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Ansible Automation Platform Workshop Guide" class="md-nav__button md-logo" aria-label="Ansible Automation Platform Workshop Guide" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    Ansible Automation Platform Workshop Guide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Guide Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding the lab setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible Basics
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tips-for-this-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tips for this Lab
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objective
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guide
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inventory-file-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inventory File Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exploring-the-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exploring the Inventory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module Discovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-module-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessing Module Documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 - First playbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 - First Automation Job
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-surveys/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 3 - User Inputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-bonus-workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bonus Exercise 4 - Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tips-for-this-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tips for this Lab
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objective
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guide
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inventory-file-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inventory File Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exploring-the-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exploring the Inventory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module Discovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-module-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessing Module Documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="workshop-exercise-the-ansible-basics">Workshop Exercise - The Ansible Basics <!-- omit in toc --></h1>
+<h2 id="tips-for-this-lab">Tips for this Lab</h2>
+<ul>
+<li>Use the VS Code terminal for all commands</li>
+<li>Copy and paste commands from the guide. </li>
+<li>Do not include the terminal prompt (e.g., <code>[student@ansible-1 ~]$</code> or <code>$</code>)</li>
+<li>Run commands one at a time unless specified</li>
+<li>If multiple commands are provided, run each one individually by pressing Enter after each line.</li>
+</ul>
+<h2 id="table-of-contents">Table of Contents <!-- omit in toc --></h2>
+<ul>
+<li><a href="#tips-for-this-lab">Tips for this Lab</a></li>
+<li><a href="#objective">Objective</a></li>
+<li><a href="#guide">Guide</a></li>
+<li><a href="#inventory-file-basics">Inventory File Basics</a></li>
+<li><a href="#module-discovery">Module Discovery</a></li>
+<li><a href="#accessing-module-documentation">Accessing Module Documentation</a></li>
+</ul>
+<h2 id="objective">Objective</h2>
+<p>In this exercise, we are going to explore the latest Ansible command line
+utility <code>ansible-navigator</code> to learn how to work with inventory files and the
+listing of modules when needing assistance. The goal is to familarize yourself
+with how <code>ansible-navigator</code> works and how it can be used to enrich your Ansible
+experience.</p>
+<h2 id="guide">Guide</h2>
+<h3 id="inventory-file-basics">Inventory File Basics</h3>
+<p>An inventory file is a text file that specifies the nodes that will be managed by the control machine. The nodes to be managed may include a list of hostnames or IP addresses of those nodes. The inventory file allows for nodes to be organized into groups by declaring a host group name within square brackets ([]).</p>
+<h3 id="exploring-the-inventory">Exploring the Inventory</h3>
+<p>To use the <code>ansible-navigator</code> command for host management, you need to provide
+an inventory file which defines a list of hosts to be managed from the control
+node. In this lab, the inventory is provided by your instructor. The inventory
+file is an <code>ini</code> formatted file listing your hosts, sorted in groups,
+additionally providing some variables. An example may look as follows:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">[</span>web<span class="o">]</span>
+node1<span class="w"> </span><span class="nv">ansible_host</span><span class="o">=</span>&lt;X.X.X.X&gt;
+node2<span class="w"> </span><span class="nv">ansible_host</span><span class="o">=</span>&lt;Y.Y.Y.Y&gt;
+node3<span class="w"> </span><span class="nv">ansible_host</span><span class="o">=</span>&lt;Z.Z.Z.Z&gt;
+
+<span class="o">[</span>control<span class="o">]</span>
+ansible-1<span class="w"> </span><span class="nv">ansible_host</span><span class="o">=</span><span class="m">44</span>.55.66.77
+</code></pre></div></td></tr></table></div>
+<p>To view your inventory with ansible-navigator, use the command
+<code>ansible-navigator inventory --list -m stdout</code>. This command displays all nodes
+and their respective groups.</p>
+<p><strong>Run the following commands:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ansible-navigator<span class="w"> </span>inventory<span class="w"> </span>--list<span class="w"> </span>-m<span class="w"> </span>stdout
+</code></pre></div></td></tr></table></div></p>
+<p><strong>Example Output:</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">[</span>student@ansible-1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>ansible-navigator<span class="w"> </span>inventory<span class="w"> </span>--list<span class="w"> </span>-m<span class="w"> </span>stdout
+<span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;_meta&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;hostvars&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">&quot;ansible-1&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">                </span><span class="s2">&quot;ansible_become&quot;</span>:<span class="w"> </span><span class="s2">&quot;true&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;ansible_host&quot;</span>:<span class="w"> </span><span class="s2">&quot;ansible-1.example.com&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;ansible_ssh_common_args&quot;</span>:<span class="w"> </span><span class="s2">&quot;-o StrictHostKeyChecking=no&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;ansible_ssh_private_key_file&quot;</span>:<span class="w"> </span><span class="s2">&quot;~/.ssh/8qnxkkey.pem&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;ansible_user&quot;</span>:<span class="w"> </span><span class="s2">&quot;ec2-user&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;timeout&quot;</span>:<span class="w"> </span><span class="m">60</span>
+<span class="w">            </span><span class="o">}</span>,
+<span class="w">            </span><span class="s2">&quot;node1&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">                </span><span class="s2">&quot;ansible_become&quot;</span>:<span class="w"> </span><span class="s2">&quot;true&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;ansible_host&quot;</span>:<span class="w"> </span><span class="s2">&quot;node1.example.com&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;ansible_ssh_common_args&quot;</span>:<span class="w"> </span><span class="s2">&quot;-o StrictHostKeyChecking=no&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;ansible_ssh_private_key_file&quot;</span>:<span class="w"> </span><span class="s2">&quot;~/.ssh/8qnxkkey.pem&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;ansible_user&quot;</span>:<span class="w"> </span><span class="s2">&quot;ec2-user&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;timeout&quot;</span>:<span class="w"> </span><span class="m">60</span>
+<span class="w">            </span><span class="o">}</span>,
+<span class="w">            </span><span class="s2">&quot;node2&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">                </span><span class="s2">&quot;ansible_become&quot;</span>:<span class="w"> </span><span class="s2">&quot;true&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;ansible_host&quot;</span>:<span class="w"> </span><span class="s2">&quot;node2.example.com&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;ansible_ssh_common_args&quot;</span>:<span class="w"> </span><span class="s2">&quot;-o StrictHostKeyChecking=no&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;ansible_ssh_private_key_file&quot;</span>:<span class="w"> </span><span class="s2">&quot;~/.ssh/8qnxkkey.pem&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;ansible_user&quot;</span>:<span class="w"> </span><span class="s2">&quot;ec2-user&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;timeout&quot;</span>:<span class="w"> </span><span class="m">60</span>
+<span class="w">            </span><span class="o">}</span>,
+<span class="w">            </span><span class="s2">&quot;node3&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">                </span><span class="s2">&quot;ansible_become&quot;</span>:<span class="w"> </span><span class="s2">&quot;true&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;ansible_host&quot;</span>:<span class="w"> </span><span class="s2">&quot;node3.example.com&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;ansible_ssh_common_args&quot;</span>:<span class="w"> </span><span class="s2">&quot;-o StrictHostKeyChecking=no&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;ansible_ssh_private_key_file&quot;</span>:<span class="w"> </span><span class="s2">&quot;~/.ssh/8qnxkkey.pem&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;ansible_user&quot;</span>:<span class="w"> </span><span class="s2">&quot;ec2-user&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;timeout&quot;</span>:<span class="w"> </span><span class="m">60</span>
+<span class="w">            </span><span class="o">}</span>
+<span class="w">        </span><span class="o">}</span>
+<span class="w">    </span><span class="o">}</span>,
+<span class="w">    </span><span class="s2">&quot;all&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;children&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">            </span><span class="s2">&quot;control&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;ungrouped&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;web&quot;</span>
+<span class="w">        </span><span class="o">]</span>
+<span class="w">    </span><span class="o">}</span>,
+<span class="w">    </span><span class="s2">&quot;control&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;hosts&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">            </span><span class="s2">&quot;ansible-1&quot;</span>
+<span class="w">        </span><span class="o">]</span>
+<span class="w">    </span><span class="o">}</span>,
+<span class="w">    </span><span class="s2">&quot;web&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;hosts&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">            </span><span class="s2">&quot;node1&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;node2&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;node3&quot;</span>
+<span class="w">        </span><span class="o">]</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></td></tr></table></div>
+<p>NOTE: <code>-m</code> is short for <code>--mode</code> which allows for the mode to be switched to standard output instead of using the text-based user interface (TUI).</p>
+<p>For a less detailed view, <code>ansible-navigator inventory --graph -m stdout</code> offers
+a visual representation of groupings.</p>
+<p><strong>Run the following commands:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ansible-navigator<span class="w"> </span>inventory<span class="w"> </span>--graph<span class="w"> </span>-m<span class="w"> </span>stdout
+</code></pre></div></td></tr></table></div></p>
+<p><strong>Example Output:</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">[</span>student@ansible-1<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>ansible-navigator<span class="w"> </span>inventory<span class="w"> </span>--graph<span class="w"> </span>-m<span class="w"> </span>stdout
+@all:
+<span class="w">  </span><span class="p">|</span>--@control:
+<span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span>--ansible-1
+<span class="w">  </span><span class="p">|</span>--@ungrouped:
+<span class="w">  </span><span class="p">|</span>--@web:
+<span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span>--node1
+<span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span>--node2
+<span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span>--node3
+</code></pre></div></td></tr></table></div>
+<p>We can clearly see that nodes: <code>node1</code>, <code>node2</code>, <code>node3</code> are part of the <code>web</code>
+group, while <code>ansible-1</code> is part of the <code>control</code> group.</p>
+<p>An inventory file can organize your hosts in groups or define variables. In our
+example, the current inventory has the groups <code>web</code> and <code>control</code>. Run
+<code>ansible-navigator</code> with these host patterns and observe the output:</p>
+<p>Using the <code>ansible-navigator inventory</code> command, you can run commands that
+provide information only for one host or group. For example, run the following
+commands and observe their different outputs.</p>
+<p><strong>Run the following commands:</strong></p>
+<blockquote>
+<p>Each line is a separate command. Run each command one at a time (press Enter after each line)
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>ansible-navigator<span class="w"> </span>inventory<span class="w"> </span>--graph<span class="w"> </span>web<span class="w"> </span>-m<span class="w"> </span>stdout
+ansible-navigator<span class="w"> </span>inventory<span class="w"> </span>--graph<span class="w"> </span>control<span class="w"> </span>-m<span class="w"> </span>stdout
+ansible-navigator<span class="w"> </span>inventory<span class="w"> </span>--host<span class="w"> </span>node1<span class="w"> </span>-m<span class="w"> </span>stdout
+</code></pre></div></td></tr></table></div></p>
+<p><strong>Tip</strong></p>
+<p>The inventory can contain more data. e.g. if you have hosts that run on
+non-standard SSH ports you can put the port number after the hostname with a
+colon. One can also define names specific to Ansible and have them point to
+the IP or hostname.</p>
+</blockquote>
+<h3 id="module-discovery">Module Discovery</h3>
+<p>Ansible Automation Platform comes with multiple supported Execution Environments
+(EEs).  These EEs come with bundled supported collections that contain supported
+content, including modules.</p>
+<p>In simple terms, think of Ansible modules as individual LEGO blocks. Collections are groups of LEGO blocks organized by theme or purpose. Execution Environments are complete LEGO box sets that contain all the blocks, tools, and instructions you need to build something amazing.</p>
+<p>When you use <code>ansible-navigator</code>, you're exploring what's inside your LEGO box set—discovering which blocks (modules) are available and how to use them. Different box sets (Execution Environments) may contain different collections and versions, so the documentation you see is always accurate for your specific setup.</p>
+<blockquote>
+<p><strong>Tip</strong></p>
+<p>In <code>ansible-navigator</code> exit by pressing the button <code>ESC</code>.</p>
+</blockquote>
+<p>To browse your available modules first enter interactive mode:</p>
+<p><strong>Run the following commands:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ansible-navigator
+</code></pre></div></td></tr></table></div></p>
+<p><img alt="picture of ansible-navigator" src="images/interactive-mode.png" /></p>
+<p>Browse a collection by typing <code>:collections</code></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>:collections
+</code></pre></div></td></tr></table></div>
+<p><img alt="picture of ansible-navigator" src="images/interactive-collections.png" /></p>
+<h3 id="accessing-module-documentation">Accessing Module Documentation</h3>
+<p>To explore a specific collection's modules, enter the number next to the
+collection name.</p>
+<p>For example in the screenshot above, the number <code>0</code> corresponds to
+<code>amazon.aws</code> collection.  To zoom into the collection type the number <code>0</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="m">0</span>
+</code></pre></div></td></tr></table></div>
+<p><img alt="picture of ansible-navigator" src="images/interactive-aws.png" /></p>
+<p>Directly access detailed documentation for any module by specifying its
+corresponding number. For
+example the module <code>ec2_tag</code> corresponds to <code>27</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>:27
+</code></pre></div></td></tr></table></div>
+<p>Scrolling down using the arrow keys or page-up and page-down can show us
+documentation and examples.</p>
+<p><img alt="picture of ansible-navigator" src="images/interactive-ec2-tag.png" /></p>
+<p><img alt="picture of ansible-navigator showing example content" src="images/interactive-ec2-tag-examples.jpg" /></p>
+<p>You can skip directly to a particular module by simply typing <code>:doc
+namespace.collection.module-name</code>.  For example typing <code>:doc amazon.aws.ec2_tag</code>
+would skip directly to the final page shown above.</p>
+<blockquote>
+<p><strong>Tip</strong></p>
+<p>Different execution environments can have access to different collections, and different versions of those collections.  By using the built-in documentation you know that it will be accurate for that particular version of the collection.</p>
+</blockquote>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../1-setup/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Understanding the lab setup">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Understanding the lab setup
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../3-playbook/" class="md-footer__link md-footer__link--next" aria-label="Next: Exercise 1 - First playbook">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Exercise 1 - First playbook
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.footer", "content.code.copy", "content.code.select"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
