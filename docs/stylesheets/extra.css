@@ -110,3 +110,26 @@
   display: none !important;
 }
 
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE
+   ============================================ */
+
+/* Hide right sidebar (Table of Contents) on tablets and mobile devices */
+/* Breakpoint: 1220px and below (Material's default breakpoint) */
+@media (max-width: 1220px) {
+  .md-sidebar--secondary {
+    display: none !important;
+  }
+}
+
+/* Extra small screens (phones) */
+@media (max-width: 768px) {
+  .md-sidebar--secondary {
+    display: none !important;
+  }
+  
+  /* Ensure content expands on small screens */
+  .md-content {
+    margin-right: 0 !important;
+  }
+}
