@@ -11,6 +11,10 @@
 
 This 45-minute workshop introduces Ansible playbooks and Ansible Automation Platform Controller. It includes 3 hands-on exercises plus 1 optional bonus exercise.
 
+The diagram below shows the flow of the workshop and what you will learn by completing the labs.
+
+![workshop_flow_and_objectives](images/workshop-flow-roadmap-objective.jpg)
+
 ## Time Planning
 
 **Note:** This is a self-paced workshop. Participants can complete the exercises at their own pace. The timings below are indicative only.
